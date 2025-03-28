@@ -5,13 +5,13 @@ export type TarifDocument = HydratedDocument<Tarif>;
 
 @Schema()
 export class Tarif {
-    @Prop({ required: true })
+    @Prop({ required: true, trim: true, minlength: 3, maxlength: 50 })
     name: string;
 
-    @Prop({ required: true })
+    @Prop({ required: true, min: 0 })
     pricePerHour: number;
 
-    @Prop()
+    @Prop({ type: [String], default: [] })
     rackets: string[];
 
     @Prop({ required: true, type: Types.ObjectId, ref: 'Club' })

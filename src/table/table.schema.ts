@@ -5,10 +5,10 @@ export type TableDocument = HydratedDocument<Table>;
 
 @Schema()
 export class Table {
-    @Prop()
+    @Prop({ required: true, trim: true, minlength: 2, maxlength: 50 })
     name: string;
 
-    @Prop({ required: true })
+    @Prop({ required: true, min: 1 })
     number: number;
 
     @Prop({ type: Types.ObjectId, required: true, ref: 'Club' })
