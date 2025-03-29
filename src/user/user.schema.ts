@@ -17,7 +17,7 @@ export class User {
     @Prop({ required: true, type: Date })
     birthDate: Date;
 
-    @Prop({ enum: ['admin', 'user', 'moderator'], default: 'user' })
+    @Prop({ required: true, enum: ['admin', 'user', 'moderator'], default: 'user' })
     role: string;
 
     @Prop({ min: 0 })
@@ -28,6 +28,9 @@ export class User {
 
     @Prop({ required: true, match: /^[0-9]{9,15}$/ })
     phone: string;
+
+    @Prop()
+    verificationCode: string;
 
 }
 export const UserSchema = SchemaFactory.createForClass(User)
