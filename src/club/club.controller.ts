@@ -15,6 +15,10 @@ export class ClubController {
   async getAllClub(): Promise<{ message: string, club: Club[] }> {
     return this.clubService.getAllClub()
   }
+  @Get('getOneClub/:id')
+  async getOneClub(@Param('id') id: string): Promise<{ message: string, club: Club }> {
+    return this.clubService.getOneClub(id)
+  }
   @Put('editClub/:id')
   async editClub(@Param('id') id: string, @Body() dto: UpdateClubDto): Promise<{ message: string, club: Club }> {
     return this.clubService.updateClub(id, dto)

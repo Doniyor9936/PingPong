@@ -12,7 +12,7 @@ export async function sendEmail(email: string, subject: string, message: string)
                 pass: process.env.SMPT_PASSWORD
             }
         })
-        
+
         await transporter.sendMail({
             from: process.env.SMPT_USER,
             to: email,

@@ -8,17 +8,17 @@ export class Session {
     @Prop({ required: true, type: Types.ObjectId, ref: 'Table' })
     table: Types.ObjectId;
 
-    @Prop({ type: Types.ObjectId, ref: 'Tarif' })
+    @Prop({ required: false, type: Types.ObjectId, ref: 'Tarif' })
     tarif?: Types.ObjectId;
 
     @Prop({ min: 0, default: 0 })
     customPrice?: number;
 
     @Prop({ required: true })
-    startTime: Date;
+    startTime: string;
 
-    @Prop()
-    endDate?: Date;
+    @Prop({ required: true, default: null })
+    endTime?: string;
 
     @Prop({ required: true, enum: ['vip', 'timed'] })
     type: string;
@@ -43,7 +43,7 @@ export class Session {
     totalPrice: number;
 
     @Prop({ required: true, enum: ['cash', 'card_Transfer', 'card_Withdraw'] })
-    paymentMethod?: string;
+    paymentMethod: string;
 }
 
 export const SessionSchema = SchemaFactory.createForClass(Session);

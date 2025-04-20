@@ -97,7 +97,7 @@ export class UserService {
         try {
             const user = await this.userSchema.findOne({ otp })
 
-            if(!user) throw new NotFoundException("user not found")
+            if (!user) throw new NotFoundException("user not found")
 
             user.isVerified = true
             await user.save()

@@ -14,7 +14,7 @@ export class Tarif {
     @Prop({ type: [String], default: [] })
     rackets: string[];
 
-    @Prop({ required: true, type: Types.ObjectId, ref: 'Club' })
+    @Prop({ type: Types.ObjectId, ref: 'Club' })
     club: Types.ObjectId;
 }
 

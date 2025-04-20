@@ -1,4 +1,4 @@
-export class updateTableDto {
-    name: string;
-    number: number;
+export class UpdateTableDto {
+    name?: string;
+    number?: number;
 }

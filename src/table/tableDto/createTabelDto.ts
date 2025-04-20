@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsNumber, IsString } from "class-validator";
 
-export class createTableDto {
+export class CreateTableDto {
     @IsString()
     name: string
 
