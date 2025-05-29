@@ -9,7 +9,9 @@ import { LoginUserDto } from './userDto/login.user.dto';
 import { UpdateUserDto } from './userDto/update.user.dto';
 import { v4 as uuid4 } from 'uuid';
 import { sendEmail } from 'src/util/email.service';
-import { generateHashPassword } from 'src/util/password.service';
+import { comparePassword, generateHashPassword } from 'src/util/password.service';
+import { generateToken } from 'src/util/token.service';
+
 
 @Injectable()
 export class UserService {
@@ -51,12 +53,12 @@ export class UserService {
             if (!user) {
                 throw new NotFoundException("user not found");
             }
-            const isMatch = await bcrypt.compare(password, user.password)
+            const isMatch = await comparePassword(password, user.password)
             if (!isMatch) {
                 throw new UnauthorizedException("notogri email yoki parol");
             }
             const payload = { _id: user._id, email: user.email, role: user.role }
-            const accessToken = await jwt.sign(payload, 'secret', { expiresIn: '1d' })
+            const accessToken = await generateToken(payload)
             const refreshToken = jwt.sign(payload, 'secret', { expiresIn: '10d' })
             return { message: `succes logged system`, accessToken, refreshToken }
         } catch (error) {
