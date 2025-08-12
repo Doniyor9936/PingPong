@@ -1,18 +1,4 @@
-import { IsMongoId, IsNotEmpty, IsString, MinLength } from 'class-validator';
+import { PartialType } from "@nestjs/swagger";
+import { CreateClubDto } from "./createdto";
 
-export class UpdateClubDto {
-
-    @IsString()
-    @MinLength(3)
-    name?: string;
-
-    @IsMongoId()
-    owner?: string;
-
-    @IsNotEmpty()
-    location?: {
-        lat: number,
-        long: number,
-        landmark: string
-    };
-}
+export class UpdateClubDto extends PartialType(CreateClubDto) {}

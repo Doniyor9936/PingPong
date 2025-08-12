@@ -19,6 +19,9 @@ export class SessionService {
             const session = await this.sessionService.create(dto)
             return { message: 'sessiya yaratildi', session }
         } catch (error) {
+            if (error instanceof ConflictException) {
+                throw error
+            }
             console.error('Sessiya yaratishda xatolik:', error);
             throw new InternalServerErrorException("server error");
         }
@@ -31,6 +34,9 @@ export class SessionService {
             }
             return { message: 'hamma sessiyalar', session: existsSession }
         } catch (error) {
+            if (error instanceof NotFoundException) {
+                throw error
+            }
             console.error(error);
             throw new InternalServerErrorException("server error");
         }
@@ -44,6 +50,9 @@ export class SessionService {
             await existsSession.save()
             return { message: 'sessiya yangilandi', session: existsSession }
         } catch (error) {
+            if (error instanceof NotFoundException) {
+                throw error
+            }
             console.error(error);
             throw new InternalServerErrorException("server error");
         }
@@ -56,6 +65,9 @@ export class SessionService {
             }
             return { message: 'sessiya ochirildi' }
         } catch (error) {
+            if (error instanceof NotFoundException) {
+                throw error
+            }
             throw new InternalServerErrorException("server error");
         }
     }

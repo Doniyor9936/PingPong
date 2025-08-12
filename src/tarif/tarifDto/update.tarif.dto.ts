@@ -1,15 +1,4 @@
-import { IsArray, IsNumber, IsOptional, IsString } from "class-validator";
+import { PartialType } from "@nestjs/swagger";
+import { CreateTarifDto } from "./create.tarif.dto";
 
-export class UpdateTarifDto {
-    @IsOptional()
-    @IsString()
-    name?: string
-
-    @IsOptional()
-    @IsNumber()
-    pricePerHour?: number
-
-    @IsOptional()
-    @IsArray()
-    rackets?: string[]
-}
+export class UpdateTarifDto extends PartialType(CreateTarifDto) {}
