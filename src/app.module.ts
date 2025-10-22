@@ -11,10 +11,7 @@ import { MongooseModule, MongooseModuleOptions } from '@nestjs/mongoose';
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true, envFilePath: '.env' }),
   MongooseModule.forRoot(process.env.DB_URI as string,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    } as MongooseModuleOptions),
+    ),
     ClubModule, TableModule, TarifModule, UserModule, SessionModule],
 
 })
