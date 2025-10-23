@@ -45,7 +45,7 @@ import {
   
     @ApiProperty({
       description: 'Foydalanuvchining to‘liq ismi',
-      example: 'Doniyor Usmonov',
+      example: 'Doniyor Qalandarov',
     })
     @IsString()
     @IsNotEmpty({ message: "To‘liq ism majburiy" })
