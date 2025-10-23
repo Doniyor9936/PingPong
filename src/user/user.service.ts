@@ -42,7 +42,7 @@ export class UserService {
             const newUser = await this.userSchema.create({ ...dto, otpExpireDate: otpExpireTime, otp: otp })
             return { message: "created new user", user: newUser }
         } catch (error) {
-            console.error(error.message);
+            console.error(error);
             throw new InternalServerErrorException("server error");
         }
     }
