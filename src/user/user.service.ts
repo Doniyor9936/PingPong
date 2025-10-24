@@ -43,7 +43,7 @@ export class UserService {
             return { message: "created new user", user: newUser }
         } catch (error) {
             console.error(error);
-            throw new InternalServerErrorException("server error");
+            throw new InternalServerErrorException(error.message);
         }
     }
     async login(dto: LoginUserDto) {
