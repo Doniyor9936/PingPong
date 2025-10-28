@@ -4,7 +4,6 @@ import * as jwt from 'jsonwebtoken';
 import { User, UserDocument } from './user.schema';
 import { Model } from 'mongoose';
 import { CreateUserDto } from './userDto/create.user.dto';
-import * as bcrypt from 'bcrypt';
 import { LoginUserDto } from './userDto/login.user.dto';
 import { UpdateUserDto } from './userDto/update.user.dto';
 import { v4 as uuid4 } from 'uuid';
