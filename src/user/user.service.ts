@@ -8,9 +8,9 @@ import * as bcrypt from 'bcrypt';
 import { LoginUserDto } from './userDto/login.user.dto';
 import { UpdateUserDto } from './userDto/update.user.dto';
 import { v4 as uuid4 } from 'uuid';
-import { sendEmail } from 'src/util/email.service';
-import { comparePassword, generateHashPassword } from 'src/util/password.service';
-import { generateToken } from 'src/util/token.service';
+import { sendEmail } from '../util/email.service';
+import { comparePassword, generateHashPassword } from '../util/password.service';
+import { generateToken } from '../util/token.service';
 
 
 @Injectable()
