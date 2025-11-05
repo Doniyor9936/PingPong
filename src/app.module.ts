@@ -8,13 +8,14 @@ import { SessionModule } from './session/session.module';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule, } from '@nestjs/mongoose';
 import { HomeController } from './home.controller';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true, envFilePath: '.env' }),
   MongooseModule.forRoot(process.env.DB_URI as string,
     ),
     ClubModule, TableModule, TarifModule, UserModule, SessionModule],
-controllers:[HomeController]
+controllers:[HomeController,AppController]
 })
 export class AppModule { }
 
